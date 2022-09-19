@@ -7,12 +7,13 @@ import (
 	"log"
 	"os"
 	"regexp"
+	"strings"
 
 	"github.com/PuerkitoBio/goquery"
 )
 
-func main() {
-	f, err := os.Open("/home/james/go/src/github.com/okex/examples/okapi-zh.html")
+func genJSON() {
+	f, err := os.Open("./okapi-zh.html")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -34,6 +35,11 @@ func main() {
 				})
 				if len(trs) == 0 {
 					return
+				}
+				for i, v := range trs {
+					l := strings.TrimLeft(v, " ")
+					l = strings.TrimRight(l, " ")
+					trs[i] = l
 				}
 
 				key := rex.FindString(trs[0])
@@ -71,7 +77,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	err = ioutil.WriteFile("comment.json", j, 0644)
+	err = ioutil.WriteFile("comment1.json", j, 0644)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -82,4 +88,35 @@ func main() {
 		// 	break
 		// }
 	}
+}
+
+func filter() {
+	j, err := ioutil.ReadFile("./comment1.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+	var m map[string][]string
+	err = json.Unmarshal(j, &m)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for k, v := range m {
+		var str []string
+	loop:
+		for _, s := range v {
+			for _, ss := range str {
+				if ss == s {
+					continue loop
+				}
+			}
+			str = append(str, s)
+		}
+		m[k] = str
+	}
+	b, err := json.Marshal(m)
+	if err != nil {
+		log.Fatal(err)
+	}
+	ioutil.WriteFile("comment2.json", b, 0644)
 }
