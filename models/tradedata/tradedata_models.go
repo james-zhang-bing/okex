@@ -10,8 +10,11 @@ import (
 
 type (
 	SupportCoin struct {
+		// contract Array 合约交易大数据接口功能支持的币种
 		Contract []string `json:"contract"`
+		// option Array 期权交易大数据接口功能支持的币种
 		Option   []string `json:"option"`
+		// spot Array 现货交易大数据接口功能支持的币种
 		Spot     []string `json:"spot"`
 	}
 	TakerVolume struct {
