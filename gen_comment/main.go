@@ -19,7 +19,7 @@ func main() {
 		fmt.Println(v)
 	}
 
-	j, err := ioutil.ReadFile("./comment2.json")
+	j, err := ioutil.ReadFile("./comment4.json")
 	if err != nil {
 		log.Fatal(err)
 	}

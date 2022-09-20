@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -10,6 +11,7 @@ import (
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
+	"golang.org/x/net/html"
 )
 
 func genJSON() {
@@ -31,7 +33,7 @@ func genJSON() {
 			s.Find("tr").Each(func(i int, s *goquery.Selection) {
 				trs := make([]string, 0)
 				s.Find("td").Each(func(i int, s *goquery.Selection) {
-					trs = append(trs, s.Text())
+					trs = append(trs, Text(s))
 				})
 				if len(trs) == 0 {
 					return
@@ -77,7 +79,7 @@ func genJSON() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	err = ioutil.WriteFile("comment1.json", j, 0644)
+	err = ioutil.WriteFile("comment3.json", j, 0644)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -90,8 +92,9 @@ func genJSON() {
 	}
 }
 
+// 去除重复的
 func filter() {
-	j, err := ioutil.ReadFile("./comment1.json")
+	j, err := ioutil.ReadFile("./comment3.json")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -118,5 +121,28 @@ func filter() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	ioutil.WriteFile("comment2.json", b, 0644)
+	ioutil.WriteFile("comment4.json", b, 0644)
+}
+
+func Text(s *goquery.Selection) string {
+	var buf bytes.Buffer
+
+	// Slightly optimized vs calling Each: no single selection object created
+	var f func(*html.Node)
+	f = func(n *html.Node) {
+		if n.Type == html.TextNode {
+			// Keep newlines and spaces, like jQuery
+			buf.WriteString(fmt.Sprintf("%s ",n.Data))
+		}
+		if n.FirstChild != nil {
+			for c := n.FirstChild; c != nil; c = c.NextSibling {
+				f(c)
+			}
+		}
+	}
+	for _, n := range s.Nodes {
+		f(n)
+	}
+
+	return buf.String()
 }
