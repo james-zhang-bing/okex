@@ -26,6 +26,11 @@ var tmpl = `func (m *{{ .StructName }})String()string{
 	{{ range .Sf }}str=fmt.Sprintf("%s\n{{ .Comment }}: %v",str,m.{{ .Name }})
 	{{ end }}return str
 }`
+var noCommentTmpl = `func (m *{{ .StructName }})String()string{
+	var str string
+	{{ range .Sf }}str=fmt.Sprintf("%s\n{{ .Name }}:%v",str,m.{{ .Name }})
+	{{ end }}return str
+}`
 
 func FindAllStruct(content *bufio.Reader) []*Fields {
 	typeStruct := make(map[string][]string)
@@ -96,6 +101,20 @@ func toPrefix(fs []*Fields) []*structType {
 	return sts
 }
 
+func splitNoComment(sts []*structType) (comment, noComment []*structType) {
+loop:
+	for _, v := range sts {
+		for _, vv := range v.Sf {
+			if vv.Comment != "" {
+				comment = append(comment, v)
+				continue loop
+			}
+		}
+		noComment = append(noComment, v)
+	}
+	return 
+}
+
 type structField struct {
 	Comment string
 	Name    string
@@ -137,8 +156,8 @@ func Stringer(filePath string) {
 	r := bufio.NewReader(f)
 	st := FindAllStruct(r)
 
-	sts := toPrefix(st)
-
+	stss := toPrefix(st)
+	sts,noComment:=splitNoComment(stss)
 	f.Close()
 	f, err = os.Open(filePath)
 	fatalErr(err)
@@ -182,6 +201,15 @@ func Stringer(filePath string) {
 	w.WriteString("\n")
 	for _, v := range sts {
 		err := t.Execute(w, *v)
+		fatalErr(err)
+		_, err = w.WriteString("\n")
+		fatalErr(err)
+	}
+	simple:=template.New("nocomment")
+	simple,err=simple.Parse(noCommentTmpl)
+	fatalErr(err)
+	for _, v := range noComment {
+		err := simple.Execute(w, *v)
 		fatalErr(err)
 		_, err = w.WriteString("\n")
 		fatalErr(err)
