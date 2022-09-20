@@ -1,4 +1,5 @@
 package subaccount
+import "fmt"
 
 import (
 	"github.com/amir-the-h/okex"
@@ -52,3 +53,39 @@ type (
 		TransID okex.JSONInt64 `json:"transId"`
 	}
 )
+func (m *SubAccount)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n子账户名称: %v",str,m.SubAcct)
+	str=fmt.Sprintf("%s\n子账户备注: %v",str,m.Label)
+	str=fmt.Sprintf("%s\n子账户绑定手机号: %v",str,m.Mobile)
+	str=fmt.Sprintf("%s\n子账户是否开启的登录时的谷歌验证: %v",str,m.GAuth)
+	str=fmt.Sprintf("%s\n子账户状态: %v",str,m.Enable)
+	str=fmt.Sprintf("%s\n成交明细产生时间: %v",str,m.TS)
+	return str
+}
+func (m *APIKey)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n子账户名称: %v",str,m.SubAcct)
+	str=fmt.Sprintf("%s\n子账户备注: %v",str,m.Label)
+	str=fmt.Sprintf("%s\n子账户API的公钥: %v",str,m.APIKey)
+	str=fmt.Sprintf("%s\n: %v",str,m.SecretKey)
+	str=fmt.Sprintf("%s\n: %v",str,m.Passphrase)
+	str=fmt.Sprintf("%s\n子账户APIKey权限: %v",str,m.Perm)
+	str=fmt.Sprintf("%s\n子账户APIKey绑定ip地址: %v",str,m.IP)
+	str=fmt.Sprintf("%s\n成交明细产生时间: %v",str,m.TS)
+	return str
+}
+func (m *HistoryTransfer)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n子账户名称: %v",str,m.SubAcct)
+	str=fmt.Sprintf("%s\n保证金币种: %v",str,m.Ccy)
+	str=fmt.Sprintf("%s\n账单: %v",str,m.BillID)
+	str=fmt.Sprintf("%s\n报价方类型（当前未生效: %v",str,m.Type)
+	str=fmt.Sprintf("%s\n成交明细产生时间: %v",str,m.TS)
+	return str
+}
+func (m *Transfer)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n划转: %v",str,m.TransID)
+	return str
+}

@@ -1,4 +1,5 @@
 package account
+import "fmt"
 
 import (
 	"github.com/amir-the-h/okex"
@@ -360,3 +361,241 @@ type (
 		MaxWd okex.JSONFloat64 `json:"maxWd"`
 	}
 )
+func (m *Balance)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n美金层面权益: %v",str,m.TotalEq)
+	str=fmt.Sprintf("%s\n美金层面逐仓仓位权益: %v",str,m.IsoEq)
+	str=fmt.Sprintf("%s\n美金层面有效保证金: %v",str,m.AdjEq)
+	str=fmt.Sprintf("%s\n美金层面全仓挂单占用保证金: %v",str,m.OrdFroz)
+	str=fmt.Sprintf("%s\n美金层面占用保证金: %v",str,m.Imr)
+	str=fmt.Sprintf("%s\n美金层面维持保证金: %v",str,m.Mmr)
+	str=fmt.Sprintf("%s\n美金层面保证金率: %v",str,m.MgnRatio)
+	str=fmt.Sprintf("%s\n以美金价值为单位的持仓数量: %v",str,m.NotionalUsd)
+	str=fmt.Sprintf("%s\n各个账户的资产估值: %v",str,m.Details)
+	str=fmt.Sprintf("%s\n订单状态更新时间: %v",str,m.UTime)
+	return str
+}
+func (m *BalanceDetails)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n保证金币种: %v",str,m.Ccy)
+	str=fmt.Sprintf("%s\n币种总权益: %v",str,m.Eq)
+	str=fmt.Sprintf("%s\n币种余额: %v",str,m.CashBal)
+	str=fmt.Sprintf("%s\n美金层面逐仓仓位权益: %v",str,m.IsoEq)
+	str=fmt.Sprintf("%s\n可用保证金: %v",str,m.AvailEq)
+	str=fmt.Sprintf("%s\n美金层面币种折算权益: %v",str,m.DisEq)
+	str=fmt.Sprintf("%s\n可用余额: %v",str,m.AvailBal)
+	str=fmt.Sprintf("%s\n冻结（不可用）: %v",str,m.FrozenBal)
+	str=fmt.Sprintf("%s\n挂单冻结数量: %v",str,m.OrdFrozen)
+	str=fmt.Sprintf("%s\n币种负债额: %v",str,m.Liab)
+	str=fmt.Sprintf("%s\n未实现盈亏: %v",str,m.Upl)
+	str=fmt.Sprintf("%s\n: %v",str,m.UplLib)
+	str=fmt.Sprintf("%s\n币种全仓负债额: %v",str,m.CrossLiab)
+	str=fmt.Sprintf("%s\n币种逐仓负债额: %v",str,m.IsoLiab)
+	str=fmt.Sprintf("%s\n美金层面保证金率: %v",str,m.MgnRatio)
+	str=fmt.Sprintf("%s\n计息: %v",str,m.Interest)
+	str=fmt.Sprintf("%s\n当前负债币种触发系统自动换币的风险: %v",str,m.Twap)
+	str=fmt.Sprintf("%s\n币种最大可借: %v",str,m.MaxLoan)
+	str=fmt.Sprintf("%s\n币种权益美金价值: %v",str,m.EqUsd)
+	str=fmt.Sprintf("%s\n币种杠杆倍数: %v",str,m.NotionalLever)
+	str=fmt.Sprintf("%s\n策略权益: %v",str,m.StgyEq)
+	str=fmt.Sprintf("%s\n逐仓未实现盈亏: %v",str,m.IsoUpl)
+	str=fmt.Sprintf("%s\n订单状态更新时间: %v",str,m.UTime)
+	return str
+}
+func (m *Position)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n产品ID: %v",str,m.InstID)
+	str=fmt.Sprintf("%s\n仓位资产币种: %v",str,m.PosCcy)
+	str=fmt.Sprintf("%s\n负债币种: %v",str,m.LiabCcy)
+	str=fmt.Sprintf("%s\n期权市值: %v",str,m.OptVal)
+	str=fmt.Sprintf("%s\n保证金币种: %v",str,m.Ccy)
+	str=fmt.Sprintf("%s\n持仓ID: %v",str,m.PosID)
+	str=fmt.Sprintf("%s\n最新成交ID: %v",str,m.TradeID)
+	str=fmt.Sprintf("%s\n持仓数量: %v",str,m.Pos)
+	str=fmt.Sprintf("%s\n可平仓数量: %v",str,m.AvailPos)
+	str=fmt.Sprintf("%s\n成交均价: %v",str,m.AvgPx)
+	str=fmt.Sprintf("%s\n未实现盈亏: %v",str,m.Upl)
+	str=fmt.Sprintf("%s\n未实现收益率: %v",str,m.UplRatio)
+	str=fmt.Sprintf("%s\n杠杆倍数: %v",str,m.Lever)
+	str=fmt.Sprintf("%s\n预估强平价: %v",str,m.LiqPx)
+	str=fmt.Sprintf("%s\n美金层面占用保证金: %v",str,m.Imr)
+	str=fmt.Sprintf("%s\n保证金余额: %v",str,m.Margin)
+	str=fmt.Sprintf("%s\n美金层面保证金率: %v",str,m.MgnRatio)
+	str=fmt.Sprintf("%s\n美金层面维持保证金: %v",str,m.Mmr)
+	str=fmt.Sprintf("%s\n币种负债额: %v",str,m.Liab)
+	str=fmt.Sprintf("%s\n计息: %v",str,m.Interest)
+	str=fmt.Sprintf("%s\n以美金价值为单位的持仓数量: %v",str,m.NotionalUsd)
+	str=fmt.Sprintf("%s\n信号区: %v",str,m.ADL)
+	str=fmt.Sprintf("%s\n最新成交价: %v",str,m.Last)
+	str=fmt.Sprintf("%s\n美金本位持仓仓位delta: %v",str,m.DeltaBS)
+	str=fmt.Sprintf("%s\n币本位持仓仓位delta: %v",str,m.DeltaPA)
+	str=fmt.Sprintf("%s\n美金本位持仓仓位gamma: %v",str,m.GammaBS)
+	str=fmt.Sprintf("%s\n币本位持仓仓位gamma: %v",str,m.GammaPA)
+	str=fmt.Sprintf("%s\n美金本位持仓仓位theta: %v",str,m.ThetaBS)
+	str=fmt.Sprintf("%s\n币本位持仓仓位theta: %v",str,m.ThetaPA)
+	str=fmt.Sprintf("%s\n美金本位持仓仓位vega: %v",str,m.VegaBS)
+	str=fmt.Sprintf("%s\n币本位持仓仓位vega: %v",str,m.VegaPA)
+	str=fmt.Sprintf("%s\n持仓方向: %v",str,m.PosSide)
+	str=fmt.Sprintf("%s\n保证金模式: %v",str,m.MgnMode)
+	str=fmt.Sprintf("%s\n产品类型: %v",str,m.InstType)
+	str=fmt.Sprintf("%s\n订单创建时间: %v",str,m.CTime)
+	str=fmt.Sprintf("%s\n订单状态更新时间: %v",str,m.UTime)
+	return str
+}
+func (m *BalanceAndPosition)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n事件类型: %v",str,m.EventType)
+	str=fmt.Sprintf("%s\n持仓信息的推送时间: %v",str,m.PTime)
+	str=fmt.Sprintf("%s\n订单状态更新时间: %v",str,m.UTime)
+	str=fmt.Sprintf("%s\n持仓详细信息: %v",str,m.PosData)
+	str=fmt.Sprintf("%s\n币种资产信息: %v",str,m.BalData)
+	return str
+}
+func (m *PositionAndAccountRisk)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n美金层面有效保证金: %v",str,m.AdjEq)
+	str=fmt.Sprintf("%s\n币种资产信息: %v",str,m.BalData)
+	str=fmt.Sprintf("%s\n持仓详细信息: %v",str,m.PosData)
+	str=fmt.Sprintf("%s\n成交明细产生时间: %v",str,m.TS)
+	return str
+}
+func (m *PositionAndAccountRiskBalanceData)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n保证金币种: %v",str,m.Ccy)
+	str=fmt.Sprintf("%s\n币种总权益: %v",str,m.Eq)
+	str=fmt.Sprintf("%s\n美金层面币种折算权益: %v",str,m.DisEq)
+	return str
+}
+func (m *PositionAndAccountRiskPositionData)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n产品ID: %v",str,m.InstID)
+	str=fmt.Sprintf("%s\n仓位资产币种: %v",str,m.PosCcy)
+	str=fmt.Sprintf("%s\n保证金币种: %v",str,m.Ccy)
+	str=fmt.Sprintf("%s\n以: %v",str,m.NotionalCcy)
+	str=fmt.Sprintf("%s\n持仓数量: %v",str,m.Pos)
+	str=fmt.Sprintf("%s\n以美金价值为单位的持仓数量: %v",str,m.NotionalUsd)
+	str=fmt.Sprintf("%s\n持仓方向: %v",str,m.PosSide)
+	str=fmt.Sprintf("%s\n产品类型: %v",str,m.InstType)
+	str=fmt.Sprintf("%s\n保证金模式: %v",str,m.MgnMode)
+	return str
+}
+func (m *Bill)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n保证金币种: %v",str,m.Ccy)
+	str=fmt.Sprintf("%s\n产品ID: %v",str,m.InstID)
+	str=fmt.Sprintf("%s\n备注: %v",str,m.Notes)
+	str=fmt.Sprintf("%s\n账单: %v",str,m.BillID)
+	str=fmt.Sprintf("%s\n订单ID: %v",str,m.OrdID)
+	str=fmt.Sprintf("%s\n账户层面的余额变动数量: %v",str,m.BalChg)
+	str=fmt.Sprintf("%s\n仓位层面的余额变动数量: %v",str,m.PosBalChg)
+	str=fmt.Sprintf("%s\n余额: %v",str,m.Bal)
+	str=fmt.Sprintf("%s\n仓位层面的余额数量: %v",str,m.PosBal)
+	str=fmt.Sprintf("%s\n委托数量: %v",str,m.Sz)
+	str=fmt.Sprintf("%s\n收益: %v",str,m.Pnl)
+	str=fmt.Sprintf("%s\n订单交易手续费: %v",str,m.Fee)
+	str=fmt.Sprintf("%s\n转出账户: %v",str,m.From)
+	str=fmt.Sprintf("%s\n转入账户: %v",str,m.To)
+	str=fmt.Sprintf("%s\n产品类型: %v",str,m.InstType)
+	str=fmt.Sprintf("%s\n: %v",str,m.MgnMode)
+	str=fmt.Sprintf("%s\n报价方类型（当前未生效: %v",str,m.Type)
+	str=fmt.Sprintf("%s\n账单子类型: %v",str,m.SubType)
+	str=fmt.Sprintf("%s\n成交明细产生时间: %v",str,m.TS)
+	return str
+}
+func (m *Config)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n当前在平台上真实交易量的用户等级: %v",str,m.Level)
+	str=fmt.Sprintf("%s\n特约用户的临时体验用户等级: %v",str,m.LevelTmp)
+	str=fmt.Sprintf("%s\n账户层级: %v",str,m.AcctLv)
+	str=fmt.Sprintf("%s\n是否自动借币: %v",str,m.AutoLoan)
+	str=fmt.Sprintf("%s\n账户ID: %v",str,m.UID)
+	str=fmt.Sprintf("%s\n当前希腊字母展示方式: %v",str,m.GreeksType)
+	str=fmt.Sprintf("%s\n持仓方式: %v",str,m.PosMode)
+	return str
+}
+func (m *PositionMode)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n持仓方式: %v",str,m.PosMode)
+	return str
+}
+func (m *Leverage)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n产品ID: %v",str,m.InstID)
+	str=fmt.Sprintf("%s\n杠杆倍数: %v",str,m.Lever)
+	str=fmt.Sprintf("%s\n保证金模式: %v",str,m.MgnMode)
+	str=fmt.Sprintf("%s\n持仓方向: %v",str,m.PosSide)
+	return str
+}
+func (m *MaxBuySellAmount)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n产品ID: %v",str,m.InstID)
+	str=fmt.Sprintf("%s\n保证金币种: %v",str,m.Ccy)
+	str=fmt.Sprintf("%s\n币币/币币杠杆: %v",str,m.MaxBuy)
+	str=fmt.Sprintf("%s\n币币/币币杠杆: %v",str,m.MaxSell)
+	return str
+}
+func (m *MaxAvailableTradeAmount)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n产品ID: %v",str,m.InstID)
+	str=fmt.Sprintf("%s\n最大买入可用数量: %v",str,m.AvailBuy)
+	str=fmt.Sprintf("%s\n最大卖出可用数量: %v",str,m.AvailSell)
+	return str
+}
+func (m *MarginBalanceAmount)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n产品ID: %v",str,m.InstID)
+	str=fmt.Sprintf("%s\n划转数量: %v",str,m.Amt)
+	str=fmt.Sprintf("%s\n持仓方向: %v",str,m.PosSide)
+	str=fmt.Sprintf("%s\n报价方类型（当前未生效: %v",str,m.Type)
+	return str
+}
+func (m *Loan)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n产品ID: %v",str,m.InstID)
+	str=fmt.Sprintf("%s\n保证金币种: %v",str,m.MgnCcy)
+	str=fmt.Sprintf("%s\n保证金币种: %v",str,m.Ccy)
+	str=fmt.Sprintf("%s\n币种最大可借: %v",str,m.MaxLoan)
+	str=fmt.Sprintf("%s\n保证金模式: %v",str,m.MgnMode)
+	str=fmt.Sprintf("%s\n订单方向: %v",str,m.Side)
+	return str
+}
+func (m *Fee)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n当前在平台上真实交易量的用户等级: %v",str,m.Level)
+	str=fmt.Sprintf("%s\n交易区的吃单手续费率: %v",str,m.Taker)
+	str=fmt.Sprintf("%s\n交易区挂单手续费率: %v",str,m.Maker)
+	str=fmt.Sprintf("%s\n交割手续费率: %v",str,m.Delivery)
+	str=fmt.Sprintf("%s\n行权手续费率: %v",str,m.Exercise)
+	str=fmt.Sprintf("%s\n订单种类: %v",str,m.Category)
+	str=fmt.Sprintf("%s\n产品类型: %v",str,m.InstType)
+	str=fmt.Sprintf("%s\n成交明细产生时间: %v",str,m.TS)
+	return str
+}
+func (m *InterestAccrued)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n产品ID: %v",str,m.InstID)
+	str=fmt.Sprintf("%s\n保证金币种: %v",str,m.Ccy)
+	str=fmt.Sprintf("%s\n计息: %v",str,m.Interest)
+	str=fmt.Sprintf("%s\n计息利率(小时): %v",str,m.InterestRate)
+	str=fmt.Sprintf("%s\n币种负债额: %v",str,m.Liab)
+	str=fmt.Sprintf("%s\n保证金模式: %v",str,m.MgnMode)
+	str=fmt.Sprintf("%s\n成交明细产生时间: %v",str,m.TS)
+	return str
+}
+func (m *InterestRate)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n保证金币种: %v",str,m.Ccy)
+	str=fmt.Sprintf("%s\n计息利率(小时): %v",str,m.InterestRate)
+	return str
+}
+func (m *Greek)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n当前希腊字母展示方式: %v",str,m.GreeksType)
+	return str
+}
+func (m *MaxWithdrawal)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n保证金币种: %v",str,m.Ccy)
+	str=fmt.Sprintf("%s\n币种单笔最大提币量: %v",str,m.MaxWd)
+	return str
+}

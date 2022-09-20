@@ -1,4 +1,5 @@
 package funding
+import "fmt"
 
 import "github.com/amir-the-h/okex"
 
@@ -156,3 +157,109 @@ type (
 		Earnings okex.JSONFloat64 `json:"earnings"`
 	}
 )
+func (m *Currency)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n保证金币种: %v",str,m.Ccy)
+	str=fmt.Sprintf("%s\n币种中文名称: %v",str,m.Name)
+	str=fmt.Sprintf("%s\n币种链信息: %v",str,m.Chain)
+	str=fmt.Sprintf("%s\n币种单笔最小提币量: %v",str,m.MinWd)
+	str=fmt.Sprintf("%s\n最小提币手续费数量: %v",str,m.MinFee)
+	str=fmt.Sprintf("%s\n最大提币手续费数量: %v",str,m.MaxFee)
+	str=fmt.Sprintf("%s\n是否可充值: %v",str,m.CanDep)
+	str=fmt.Sprintf("%s\n是否可提币: %v",str,m.CanWd)
+	str=fmt.Sprintf("%s\n是否可内部转账: %v",str,m.CanInternal)
+	return str
+}
+func (m *Balance)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n保证金币种: %v",str,m.Ccy)
+	str=fmt.Sprintf("%s\n余额: %v",str,m.Bal)
+	str=fmt.Sprintf("%s\n冻结（不可用）: %v",str,m.FrozenBal)
+	str=fmt.Sprintf("%s\n可用余额: %v",str,m.AvailBal)
+	return str
+}
+func (m *Transfer)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n划转: %v",str,m.TransID)
+	str=fmt.Sprintf("%s\n保证金币种: %v",str,m.Ccy)
+	str=fmt.Sprintf("%s\n划转数量: %v",str,m.Amt)
+	str=fmt.Sprintf("%s\n转出账户: %v",str,m.From)
+	str=fmt.Sprintf("%s\n转入账户: %v",str,m.To)
+	return str
+}
+func (m *Bill)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n账单: %v",str,m.BillID)
+	str=fmt.Sprintf("%s\n保证金币种: %v",str,m.Ccy)
+	str=fmt.Sprintf("%s\n余额: %v",str,m.Bal)
+	str=fmt.Sprintf("%s\n账户层面的余额变动数量: %v",str,m.BalChg)
+	str=fmt.Sprintf("%s\n报价方类型（当前未生效: %v",str,m.Type)
+	str=fmt.Sprintf("%s\n成交明细产生时间: %v",str,m.TS)
+	return str
+}
+func (m *DepositAddress)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n充值地址: %v",str,m.Addr)
+	str=fmt.Sprintf("%s\n订单标签: %v",str,m.Tag)
+	str=fmt.Sprintf("%s\n部分币种充值需要: %v",str,m.Memo)
+	str=fmt.Sprintf("%s\n部分币种充值需要此字段（payment_id）: %v",str,m.PmtID)
+	str=fmt.Sprintf("%s\n保证金币种: %v",str,m.Ccy)
+	str=fmt.Sprintf("%s\n币种链信息: %v",str,m.Chain)
+	str=fmt.Sprintf("%s\n合约地址后6位: %v",str,m.CtAddr)
+	str=fmt.Sprintf("%s\n该地址是否为页面选中的地址: %v",str,m.Selected)
+	str=fmt.Sprintf("%s\n转入账户: %v",str,m.To)
+	str=fmt.Sprintf("%s\n成交明细产生时间: %v",str,m.TS)
+	return str
+}
+func (m *DepositHistory)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n保证金币种: %v",str,m.Ccy)
+	str=fmt.Sprintf("%s\n币种链信息: %v",str,m.Chain)
+	str=fmt.Sprintf("%s\n区块转账哈希记录: %v",str,m.TxID)
+	str=fmt.Sprintf("%s\n转出账户: %v",str,m.From)
+	str=fmt.Sprintf("%s\n转入账户: %v",str,m.To)
+	str=fmt.Sprintf("%s\n充值记录: %v",str,m.DepId)
+	str=fmt.Sprintf("%s\n划转数量: %v",str,m.Amt)
+	str=fmt.Sprintf("%s\n订单状态: %v",str,m.State)
+	str=fmt.Sprintf("%s\n成交明细产生时间: %v",str,m.TS)
+	return str
+}
+func (m *Withdrawal)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n保证金币种: %v",str,m.Ccy)
+	str=fmt.Sprintf("%s\n币种链信息: %v",str,m.Chain)
+	str=fmt.Sprintf("%s\n提币申请ID: %v",str,m.WdID)
+	str=fmt.Sprintf("%s\n划转数量: %v",str,m.Amt)
+	return str
+}
+func (m *WithdrawalHistory)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n保证金币种: %v",str,m.Ccy)
+	str=fmt.Sprintf("%s\n币种链信息: %v",str,m.Chain)
+	str=fmt.Sprintf("%s\n区块转账哈希记录: %v",str,m.TxID)
+	str=fmt.Sprintf("%s\n转出账户: %v",str,m.From)
+	str=fmt.Sprintf("%s\n转入账户: %v",str,m.To)
+	str=fmt.Sprintf("%s\n订单标签: %v",str,m.Tag)
+	str=fmt.Sprintf("%s\n部分币种充值需要此字段（payment_id）: %v",str,m.PmtID)
+	str=fmt.Sprintf("%s\n部分币种充值需要: %v",str,m.Memo)
+	str=fmt.Sprintf("%s\n划转数量: %v",str,m.Amt)
+	str=fmt.Sprintf("%s\n订单交易手续费: %v",str,m.Fee)
+	str=fmt.Sprintf("%s\n提币申请ID: %v",str,m.WdID)
+	str=fmt.Sprintf("%s\n订单状态: %v",str,m.State)
+	str=fmt.Sprintf("%s\n成交明细产生时间: %v",str,m.TS)
+	return str
+}
+func (m *PiggyBank)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n保证金币种: %v",str,m.Ccy)
+	str=fmt.Sprintf("%s\n划转数量: %v",str,m.Amt)
+	str=fmt.Sprintf("%s\n订单方向: %v",str,m.Side)
+	return str
+}
+func (m *PiggyBankBalance)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n保证金币种: %v",str,m.Ccy)
+	str=fmt.Sprintf("%s\n划转数量: %v",str,m.Amt)
+	str=fmt.Sprintf("%s\n币种持仓收益: %v",str,m.Earnings)
+	return str
+}

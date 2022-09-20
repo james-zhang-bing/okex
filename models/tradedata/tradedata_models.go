@@ -3,9 +3,10 @@ package tradedata
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/amir-the-h/okex"
 	"strconv"
 	"time"
+
+	"github.com/amir-the-h/okex"
 )
 
 type (
@@ -13,9 +14,9 @@ type (
 		// contract Array 合约交易大数据接口功能支持的币种
 		Contract []string `json:"contract"`
 		// option Array 期权交易大数据接口功能支持的币种
-		Option   []string `json:"option"`
+		Option []string `json:"option"`
 		// spot Array 现货交易大数据接口功能支持的币种
-		Spot     []string `json:"spot"`
+		Spot []string `json:"spot"`
 	}
 	TakerVolume struct {
 		SellVol float64
@@ -369,4 +370,69 @@ func (c *TakerFlow) UnmarshalJSON(buf []byte) error {
 	}
 
 	return nil
+}
+func (m *SupportCoin) String() string {
+	var str string
+	str = fmt.Sprintf("%s\n合约交易大数据接口功能支持的币种: %v", str, m.Contract)
+	str = fmt.Sprintf("%s\n期权交易大数据接口功能支持的币种: %v", str, m.Option)
+	str = fmt.Sprintf("%s\n现货交易大数据接口功能支持的币种: %v", str, m.Spot)
+	return str
+}
+func (m *TakerVolume) String() string {
+	var str string
+	str = fmt.Sprintf("%s\nSellVol:%v", str, m.SellVol)
+	str = fmt.Sprintf("%s\nBuyVol:%v", str, m.BuyVol)
+	str = fmt.Sprintf("%s\nTS:%v", str, m.TS)
+	return str
+}
+func (m *Ratio) String() string {
+	var str string
+	str = fmt.Sprintf("%s\nRatio:%v", str, m.Ratio)
+	str = fmt.Sprintf("%s\nTS:%v", str, m.TS)
+	return str
+}
+func (m *InterestAndVolumeRatio) String() string {
+	var str string
+	str = fmt.Sprintf("%s\nOi:%v", str, m.Oi)
+	str = fmt.Sprintf("%s\nVol:%v", str, m.Vol)
+	str = fmt.Sprintf("%s\nTS:%v", str, m.TS)
+	return str
+}
+func (m *PutCallRatio) String() string {
+	var str string
+	str = fmt.Sprintf("%s\nOiRatio:%v", str, m.OiRatio)
+	str = fmt.Sprintf("%s\nVolRatio:%v", str, m.VolRatio)
+	str = fmt.Sprintf("%s\nTS:%v", str, m.TS)
+	return str
+}
+func (m *InterestAndVolumeExpiry) String() string {
+	var str string
+	str = fmt.Sprintf("%s\nCallOI:%v", str, m.CallOI)
+	str = fmt.Sprintf("%s\nPutOI:%v", str, m.PutOI)
+	str = fmt.Sprintf("%s\nCallVol:%v", str, m.CallVol)
+	str = fmt.Sprintf("%s\nPutVol:%v", str, m.PutVol)
+	str = fmt.Sprintf("%s\nExpTime:%v", str, m.ExpTime)
+	str = fmt.Sprintf("%s\nTS:%v", str, m.TS)
+	return str
+}
+func (m *InterestAndVolumeStrike) String() string {
+	var str string
+	str = fmt.Sprintf("%s\nStrike:%v", str, m.Strike)
+	str = fmt.Sprintf("%s\nCallOI:%v", str, m.CallOI)
+	str = fmt.Sprintf("%s\nPutOI:%v", str, m.PutOI)
+	str = fmt.Sprintf("%s\nCallVol:%v", str, m.CallVol)
+	str = fmt.Sprintf("%s\nPutVol:%v", str, m.PutVol)
+	str = fmt.Sprintf("%s\nTS:%v", str, m.TS)
+	return str
+}
+func (m *TakerFlow) String() string {
+	var str string
+	str = fmt.Sprintf("%s\nCallBuyVol:%v", str, m.CallBuyVol)
+	str = fmt.Sprintf("%s\nCallSellVol:%v", str, m.CallSellVol)
+	str = fmt.Sprintf("%s\nPutBuyVol:%v", str, m.PutBuyVol)
+	str = fmt.Sprintf("%s\nPutSellVol:%v", str, m.PutSellVol)
+	str = fmt.Sprintf("%s\nCallBlockVol:%v", str, m.CallBlockVol)
+	str = fmt.Sprintf("%s\nPutBlockVol:%v", str, m.PutBlockVol)
+	str = fmt.Sprintf("%s\nTS:%v", str, m.TS)
+	return str
 }

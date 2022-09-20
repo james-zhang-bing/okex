@@ -1,4 +1,5 @@
 package publicdata
+import "fmt"
 
 import (
 	"github.com/amir-the-h/okex"
@@ -277,3 +278,196 @@ type (
 		End         okex.JSONTime `json:"end"`
 	}
 )
+func (m *Instrument)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n产品ID: %v",str,m.InstID)
+	str=fmt.Sprintf("%s\n标的指数: %v",str,m.Uly)
+	str=fmt.Sprintf("%s\n交易货币币种: %v",str,m.BaseCcy)
+	str=fmt.Sprintf("%s\n计价货币币种: %v",str,m.QuoteCcy)
+	str=fmt.Sprintf("%s\n盈亏结算和保证金币种: %v",str,m.SettleCcy)
+	str=fmt.Sprintf("%s\n合约面值计价币种: %v",str,m.CtValCcy)
+	str=fmt.Sprintf("%s\n合约面值: %v",str,m.CtVal)
+	str=fmt.Sprintf("%s\n合约乘数: %v",str,m.CtMult)
+	str=fmt.Sprintf("%s\n行权价格: %v",str,m.Stk)
+	str=fmt.Sprintf("%s\n下单价格精度: %v",str,m.TickSz)
+	str=fmt.Sprintf("%s\n下单数量精度: %v",str,m.LotSz)
+	str=fmt.Sprintf("%s\n最小下单数量: %v",str,m.MinSz)
+	str=fmt.Sprintf("%s\n杠杆倍数: %v",str,m.Lever)
+	str=fmt.Sprintf("%s\n产品类型: %v",str,m.InstType)
+	str=fmt.Sprintf("%s\n订单种类: %v",str,m.Category)
+	str=fmt.Sprintf("%s\n期权类型: %v",str,m.OptType)
+	str=fmt.Sprintf("%s\n上线日期: %v",str,m.ListTime)
+	str=fmt.Sprintf("%s\n请求有效截止时间。Unix时间戳的毫秒数格式: %v",str,m.ExpTime)
+	str=fmt.Sprintf("%s\n正向合约: %v",str,m.CtType)
+	str=fmt.Sprintf("%s\n合约日期别名: %v",str,m.Alias)
+	str=fmt.Sprintf("%s\n订单状态: %v",str,m.State)
+	return str
+}
+func (m *DeliveryExerciseHistory)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n各个账户的资产估值: %v",str,m.Details)
+	str=fmt.Sprintf("%s\n成交明细产生时间: %v",str,m.TS)
+	return str
+}
+func (m *DeliveryExerciseHistoryDetails)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n产品ID: %v",str,m.InstID)
+	str=fmt.Sprintf("%s\n委托价格: %v",str,m.Px)
+	str=fmt.Sprintf("%s\n报价方类型（当前未生效: %v",str,m.Type)
+	return str
+}
+func (m *OpenInterest)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n产品ID: %v",str,m.InstID)
+	str=fmt.Sprintf("%s\n持仓量（按: %v",str,m.Oi)
+	str=fmt.Sprintf("%s\n持仓量（按: %v",str,m.OiCcy)
+	str=fmt.Sprintf("%s\n产品类型: %v",str,m.InstType)
+	str=fmt.Sprintf("%s\n成交明细产生时间: %v",str,m.TS)
+	return str
+}
+func (m *FundingRate)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n产品ID: %v",str,m.InstID)
+	str=fmt.Sprintf("%s\n产品类型: %v",str,m.InstType)
+	str=fmt.Sprintf("%s\n资金费率: %v",str,m.FundingRate)
+	str=fmt.Sprintf("%s\n: %v",str,m.NextFundingRate)
+	str=fmt.Sprintf("%s\n资金费时间: %v",str,m.FundingTime)
+	str=fmt.Sprintf("%s\n下一期资金费时间: %v",str,m.NextFundingTime)
+	return str
+}
+func (m *LimitPrice)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n产品ID: %v",str,m.InstID)
+	str=fmt.Sprintf("%s\n产品类型: %v",str,m.InstType)
+	str=fmt.Sprintf("%s\n最高买价: %v",str,m.BuyLmt)
+	str=fmt.Sprintf("%s\n最低卖价: %v",str,m.SellLmt)
+	str=fmt.Sprintf("%s\n成交明细产生时间: %v",str,m.TS)
+	return str
+}
+func (m *EstimatedDeliveryExercisePrice)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n产品ID: %v",str,m.InstID)
+	str=fmt.Sprintf("%s\n产品类型: %v",str,m.InstType)
+	str=fmt.Sprintf("%s\n预估交割、行权价格: %v",str,m.SettlePx)
+	str=fmt.Sprintf("%s\n成交明细产生时间: %v",str,m.TS)
+	return str
+}
+func (m *OptionMarketData)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n产品ID: %v",str,m.InstID)
+	str=fmt.Sprintf("%s\n标的指数: %v",str,m.Uly)
+	str=fmt.Sprintf("%s\n产品类型: %v",str,m.InstType)
+	str=fmt.Sprintf("%s\n期权价格对uly价格的敏感度: %v",str,m.Delta)
+	str=fmt.Sprintf("%s\ndelta对uly价格的敏感度: %v",str,m.Gamma)
+	str=fmt.Sprintf("%s\n权价格对隐含波动率的敏感度: %v",str,m.Vega)
+	str=fmt.Sprintf("%s\n期权价格对剩余期限的敏感度: %v",str,m.Theta)
+	str=fmt.Sprintf("%s\n美金本位持仓仓位delta: %v",str,m.DeltaBS)
+	str=fmt.Sprintf("%s\n美金本位持仓仓位gamma: %v",str,m.GammaBS)
+	str=fmt.Sprintf("%s\n美金本位持仓仓位vega: %v",str,m.VegaBS)
+	str=fmt.Sprintf("%s\n美金本位持仓仓位theta: %v",str,m.ThetaBS)
+	str=fmt.Sprintf("%s\n杠杆倍数: %v",str,m.Lever)
+	str=fmt.Sprintf("%s\n标记波动率: %v",str,m.MarkVol)
+	str=fmt.Sprintf("%s\nbid波动率: %v",str,m.BidVol)
+	str=fmt.Sprintf("%s\nask波动率: %v",str,m.AskVol)
+	str=fmt.Sprintf("%s\n已实现波动率（目前该字段暂未启用）: %v",str,m.RealVol)
+	str=fmt.Sprintf("%s\n成交明细产生时间: %v",str,m.TS)
+	return str
+}
+func (m *GetDiscountRateAndInterestFreeQuota)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n保证金币种: %v",str,m.Ccy)
+	str=fmt.Sprintf("%s\n划转数量: %v",str,m.Amt)
+	str=fmt.Sprintf("%s\n折算率等级: %v",str,m.DiscountLv)
+	str=fmt.Sprintf("%s\n币种折算率详情: %v",str,m.DiscountInfo)
+	return str
+}
+func (m *DiscountInfo)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n折算率: %v",str,m.DiscountRate)
+	str=fmt.Sprintf("%s\n最多可调整的保证金数量: %v",str,m.MaxAmt)
+	str=fmt.Sprintf("%s\n最小申购量: %v",str,m.MinAmt)
+	return str
+}
+func (m *SystemTime)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n成交明细产生时间: %v",str,m.TS)
+	return str
+}
+func (m *LiquidationOrder)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n产品ID: %v",str,m.InstID)
+	str=fmt.Sprintf("%s\n标的指数: %v",str,m.Uly)
+	str=fmt.Sprintf("%s\n产品类型: %v",str,m.InstType)
+	str=fmt.Sprintf("%s\n当前: %v",str,m.TotalLoss)
+	str=fmt.Sprintf("%s\n各个账户的资产估值: %v",str,m.Details)
+	return str
+}
+func (m *LiquidationOrderDetail)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n保证金币种: %v",str,m.Ccy)
+	str=fmt.Sprintf("%s\n订单方向: %v",str,m.Side)
+	str=fmt.Sprintf("%s\n持仓方向: %v",str,m.OosSide)
+	str=fmt.Sprintf("%s\n破产价格: %v",str,m.BkPx)
+	str=fmt.Sprintf("%s\n委托数量: %v",str,m.Sz)
+	str=fmt.Sprintf("%s\n穿仓亏损数量: %v",str,m.BkLoss)
+	str=fmt.Sprintf("%s\n成交明细产生时间: %v",str,m.TS)
+	return str
+}
+func (m *MarkPrice)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n产品ID: %v",str,m.InstID)
+	str=fmt.Sprintf("%s\n产品类型: %v",str,m.InstType)
+	str=fmt.Sprintf("%s\n标记价格: %v",str,m.MarkPx)
+	str=fmt.Sprintf("%s\n成交明细产生时间: %v",str,m.TS)
+	return str
+}
+func (m *PositionTier)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n产品ID: %v",str,m.InstID)
+	str=fmt.Sprintf("%s\n标的指数: %v",str,m.Uly)
+	str=fmt.Sprintf("%s\n产品类型: %v",str,m.InstType)
+	str=fmt.Sprintf("%s\n查指定档位: %v",str,m.Tier)
+	str=fmt.Sprintf("%s\n最小下单数量: %v",str,m.MinSz)
+	str=fmt.Sprintf("%s\n最大持仓量: %v",str,m.MaxSz)
+	str=fmt.Sprintf("%s\n美金层面维持保证金: %v",str,m.Mmr)
+	str=fmt.Sprintf("%s\n美金层面占用保证金: %v",str,m.Imr)
+	str=fmt.Sprintf("%s\n期权保证金系数: %v",str,m.OptMgnFactor)
+	str=fmt.Sprintf("%s\n计价货币: %v",str,m.QuoteMaxLoan)
+	str=fmt.Sprintf("%s\n交易货币: %v",str,m.BaseMaxLoan)
+	str=fmt.Sprintf("%s\n最高可用杠杆倍数: %v",str,m.MaxLever)
+	str=fmt.Sprintf("%s\n成交明细产生时间: %v",str,m.TS)
+	return str
+}
+func (m *InterestRateAndLoanQuota)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n基础利率和借币限额: %v",str,m.Basic)
+	str=fmt.Sprintf("%s\n专业用户: %v",str,m.Vip)
+	str=fmt.Sprintf("%s\n普通用户: %v",str,m.Regular)
+	return str
+}
+func (m *InterestRateAndLoanBasic)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n保证金币种: %v",str,m.Ccy)
+	str=fmt.Sprintf("%s\n最新出借利率: %v",str,m.Rate)
+	str=fmt.Sprintf("%s\n基础借币限额: %v",str,m.Quota)
+	return str
+}
+func (m *InterestRateAndLoanUser)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n当前在平台上真实交易量的用户等级: %v",str,m.Level)
+	str=fmt.Sprintf("%s\n利率的折扣率: %v",str,m.IrDiscount)
+	str=fmt.Sprintf("%s\n借币限额系数: %v",str,m.LoanQuotaCoef)
+	return str
+}
+func (m *State)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n系统维护说明的标题: %v",str,m.Title)
+	str=fmt.Sprintf("%s\n订单状态: %v",str,m.State)
+	str=fmt.Sprintf("%s\n系统维护详情的超级链接,若无返回值: %v",str,m.Href)
+	str=fmt.Sprintf("%s\n服务类型: %v",str,m.ServiceType)
+	str=fmt.Sprintf("%s\n系统: %v",str,m.System)
+	str=fmt.Sprintf("%s\n改期进度说明: %v",str,m.ScheDesc)
+	str=fmt.Sprintf("%s\n筛选的开始时间戳: %v",str,m.Begin)
+	str=fmt.Sprintf("%s\n筛选的结束时间戳: %v",str,m.End)
+	return str
+}

@@ -1,4 +1,5 @@
 package trade
+import "fmt"
 
 import (
 	"github.com/amir-the-h/okex"
@@ -250,3 +251,152 @@ type (
 		TriggerTime  okex.JSONTime       `json:"triggerTime"`
 	}
 )
+func (m *PlaceOrder)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n客户自定义订单ID: %v",str,m.ClOrdID)
+	str=fmt.Sprintf("%s\n订单标签: %v",str,m.Tag)
+	str=fmt.Sprintf("%s\n事件执行失败时的msg: %v",str,m.SMsg)
+	str=fmt.Sprintf("%s\n事件执行结果的code: %v",str,m.SCode)
+	str=fmt.Sprintf("%s\n订单ID: %v",str,m.OrdID)
+	return str
+}
+func (m *CancelOrder)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n订单ID: %v",str,m.OrdID)
+	str=fmt.Sprintf("%s\n客户自定义订单ID: %v",str,m.ClOrdID)
+	str=fmt.Sprintf("%s\n事件执行失败时的msg: %v",str,m.SMsg)
+	str=fmt.Sprintf("%s\n事件执行结果的code: %v",str,m.SCode)
+	return str
+}
+func (m *AmendOrder)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n订单ID: %v",str,m.OrdID)
+	str=fmt.Sprintf("%s\n客户自定义订单ID: %v",str,m.ClOrdID)
+	str=fmt.Sprintf("%s\n用户自定义修改事件ID: %v",str,m.ReqID)
+	str=fmt.Sprintf("%s\n事件执行失败时的msg: %v",str,m.SMsg)
+	str=fmt.Sprintf("%s\n事件执行结果的code: %v",str,m.SCode)
+	return str
+}
+func (m *ClosePosition)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n产品ID: %v",str,m.InstID)
+	str=fmt.Sprintf("%s\n持仓方向: %v",str,m.PosSide)
+	return str
+}
+func (m *Order)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n产品ID: %v",str,m.InstID)
+	str=fmt.Sprintf("%s\n保证金币种: %v",str,m.Ccy)
+	str=fmt.Sprintf("%s\n订单ID: %v",str,m.OrdID)
+	str=fmt.Sprintf("%s\n客户自定义订单ID: %v",str,m.ClOrdID)
+	str=fmt.Sprintf("%s\n最新成交ID: %v",str,m.TradeID)
+	str=fmt.Sprintf("%s\n订单标签: %v",str,m.Tag)
+	str=fmt.Sprintf("%s\n订单种类: %v",str,m.Category)
+	str=fmt.Sprintf("%s\n交易手续费币种: %v",str,m.FeeCcy)
+	str=fmt.Sprintf("%s\n返佣金币种: %v",str,m.RebateCcy)
+	str=fmt.Sprintf("%s\n委托价格: %v",str,m.Px)
+	str=fmt.Sprintf("%s\n委托数量: %v",str,m.Sz)
+	str=fmt.Sprintf("%s\n收益: %v",str,m.Pnl)
+	str=fmt.Sprintf("%s\n累计成交数量: %v",str,m.AccFillSz)
+	str=fmt.Sprintf("%s\n最新成交价格: %v",str,m.FillPx)
+	str=fmt.Sprintf("%s\n最新成交数量: %v",str,m.FillSz)
+	str=fmt.Sprintf("%s\n最新成交时间: %v",str,m.FillTime)
+	str=fmt.Sprintf("%s\n成交均价: %v",str,m.AvgPx)
+	str=fmt.Sprintf("%s\n杠杆倍数: %v",str,m.Lever)
+	str=fmt.Sprintf("%s\n止盈触发价: %v",str,m.TpTriggerPx)
+	str=fmt.Sprintf("%s\n止盈委托价: %v",str,m.TpOrdPx)
+	str=fmt.Sprintf("%s\n止损触发价: %v",str,m.SlTriggerPx)
+	str=fmt.Sprintf("%s\n止损委托价: %v",str,m.SlOrdPx)
+	str=fmt.Sprintf("%s\n订单交易手续费: %v",str,m.Fee)
+	str=fmt.Sprintf("%s\n返佣金额: %v",str,m.Rebate)
+	str=fmt.Sprintf("%s\n订单状态: %v",str,m.State)
+	str=fmt.Sprintf("%s\n交易模式: %v",str,m.TdMode)
+	str=fmt.Sprintf("%s\n持仓方向: %v",str,m.PosSide)
+	str=fmt.Sprintf("%s\n订单方向: %v",str,m.Side)
+	str=fmt.Sprintf("%s\n订单类型: %v",str,m.OrdType)
+	str=fmt.Sprintf("%s\n产品类型: %v",str,m.InstType)
+	str=fmt.Sprintf("%s\n市价单委托数量的类型: %v",str,m.TgtCcy)
+	str=fmt.Sprintf("%s\n订单状态更新时间: %v",str,m.UTime)
+	str=fmt.Sprintf("%s\n订单创建时间: %v",str,m.CTime)
+	return str
+}
+func (m *TransactionDetail)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n产品ID: %v",str,m.InstID)
+	str=fmt.Sprintf("%s\n订单ID: %v",str,m.OrdID)
+	str=fmt.Sprintf("%s\n最新成交ID: %v",str,m.TradeID)
+	str=fmt.Sprintf("%s\n客户自定义订单ID: %v",str,m.ClOrdID)
+	str=fmt.Sprintf("%s\n账单: %v",str,m.BillID)
+	str=fmt.Sprintf("%s\n订单标签: %v",str,m.Tag)
+	str=fmt.Sprintf("%s\n最新成交价格: %v",str,m.FillPx)
+	str=fmt.Sprintf("%s\n最新成交数量: %v",str,m.FillSz)
+	str=fmt.Sprintf("%s\n交易手续费币种: %v",str,m.FeeCcy)
+	str=fmt.Sprintf("%s\n订单交易手续费: %v",str,m.Fee)
+	str=fmt.Sprintf("%s\n产品类型: %v",str,m.InstType)
+	str=fmt.Sprintf("%s\n订单方向: %v",str,m.Side)
+	str=fmt.Sprintf("%s\n持仓方向: %v",str,m.PosSide)
+	str=fmt.Sprintf("%s\n流动性方向: %v",str,m.ExecType)
+	str=fmt.Sprintf("%s\n成交明细产生时间: %v",str,m.TS)
+	return str
+}
+func (m *PlaceAlgoOrder)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n策略委托单ID: %v",str,m.AlgoID)
+	str=fmt.Sprintf("%s\n事件执行失败时的msg: %v",str,m.SMsg)
+	str=fmt.Sprintf("%s\n事件执行结果的code: %v",str,m.SCode)
+	return str
+}
+func (m *CancelAlgoOrder)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n策略委托单ID: %v",str,m.AlgoID)
+	str=fmt.Sprintf("%s\n事件执行失败时的msg: %v",str,m.SMsg)
+	str=fmt.Sprintf("%s\n事件执行结果的code: %v",str,m.SCode)
+	return str
+}
+func (m *AlgoOrder)String()string{
+	var str string
+	str=fmt.Sprintf("%s\n产品ID: %v",str,m.InstID)
+	str=fmt.Sprintf("%s\n保证金币种: %v",str,m.Ccy)
+	str=fmt.Sprintf("%s\n订单ID: %v",str,m.OrdID)
+	str=fmt.Sprintf("%s\n策略委托单ID: %v",str,m.AlgoID)
+	str=fmt.Sprintf("%s\n客户自定义订单ID: %v",str,m.ClOrdID)
+	str=fmt.Sprintf("%s\n最新成交ID: %v",str,m.TradeID)
+	str=fmt.Sprintf("%s\n订单标签: %v",str,m.Tag)
+	str=fmt.Sprintf("%s\n订单种类: %v",str,m.Category)
+	str=fmt.Sprintf("%s\n交易手续费币种: %v",str,m.FeeCcy)
+	str=fmt.Sprintf("%s\n返佣金币种: %v",str,m.RebateCcy)
+	str=fmt.Sprintf("%s\n下单间隔: %v",str,m.TimeInterval)
+	str=fmt.Sprintf("%s\n委托价格: %v",str,m.Px)
+	str=fmt.Sprintf("%s\n挂单价距离盘口的比例: %v",str,m.PxVar)
+	str=fmt.Sprintf("%s\n挂单价距离盘口的价距: %v",str,m.PxSpread)
+	str=fmt.Sprintf("%s\n挂单限制价: %v",str,m.PxLimit)
+	str=fmt.Sprintf("%s\n委托数量: %v",str,m.Sz)
+	str=fmt.Sprintf("%s\n单笔数量: %v",str,m.SzLimit)
+	str=fmt.Sprintf("%s\n实际委托量: %v",str,m.ActualSz)
+	str=fmt.Sprintf("%s\n实际委托价: %v",str,m.ActualPx)
+	str=fmt.Sprintf("%s\n收益: %v",str,m.Pnl)
+	str=fmt.Sprintf("%s\n累计成交数量: %v",str,m.AccFillSz)
+	str=fmt.Sprintf("%s\n最新成交价格: %v",str,m.FillPx)
+	str=fmt.Sprintf("%s\n最新成交数量: %v",str,m.FillSz)
+	str=fmt.Sprintf("%s\n最新成交时间: %v",str,m.FillTime)
+	str=fmt.Sprintf("%s\n成交均价: %v",str,m.AvgPx)
+	str=fmt.Sprintf("%s\n杠杆倍数: %v",str,m.Lever)
+	str=fmt.Sprintf("%s\n止盈触发价: %v",str,m.TpTriggerPx)
+	str=fmt.Sprintf("%s\n止盈委托价: %v",str,m.TpOrdPx)
+	str=fmt.Sprintf("%s\n止损触发价: %v",str,m.SlTriggerPx)
+	str=fmt.Sprintf("%s\n止损委托价: %v",str,m.SlOrdPx)
+	str=fmt.Sprintf("%s\n计划委托委托价格: %v",str,m.OrdPx)
+	str=fmt.Sprintf("%s\n订单交易手续费: %v",str,m.Fee)
+	str=fmt.Sprintf("%s\n返佣金额: %v",str,m.Rebate)
+	str=fmt.Sprintf("%s\n订单状态: %v",str,m.State)
+	str=fmt.Sprintf("%s\n交易模式: %v",str,m.TdMode)
+	str=fmt.Sprintf("%s\n实际触发方向: %v",str,m.ActualSide)
+	str=fmt.Sprintf("%s\n持仓方向: %v",str,m.PosSide)
+	str=fmt.Sprintf("%s\n订单方向: %v",str,m.Side)
+	str=fmt.Sprintf("%s\n订单类型: %v",str,m.OrdType)
+	str=fmt.Sprintf("%s\n产品类型: %v",str,m.InstType)
+	str=fmt.Sprintf("%s\n市价单委托数量的类型: %v",str,m.TgtCcy)
+	str=fmt.Sprintf("%s\n订单创建时间: %v",str,m.CTime)
+	str=fmt.Sprintf("%s\n策略委托触发时间: %v",str,m.TriggerTime)
+	return str
+}
