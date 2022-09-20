@@ -330,8 +330,8 @@
     ],
     "addrEx": [
         "addrEx",
-        "Object \n",
-        "充值地址备注，部分币种充值需要，若不需要则不返回此字段 如币种 TONCOIN 的充值地址备注标签名为 comment ,则该字段返回：{'comment':'123456'}\n"
+        "Object ",
+        "充值地址备注，部分币种充值需要，若不需要则不返回此字段 如币种 TONCOIN 的充值地址备注标签名为 comment ,则该字段返回：{'comment':'123456'}"
     ],
     "adjEq": [
         "adjEq",
@@ -358,7 +358,7 @@
         "algoOrdType",
         "String",
         "是",
-        "策略订单类型 grid ：现货网格委托 contract_grid ：合约网格委托 moon_grid ：天地网格委托\n"
+        "策略订单类型 grid ：现货网格委托 contract_grid ：合约网格委托 moon_grid ：天地网格委托"
     ],
     "alias": [
         "alias",
@@ -439,7 +439,7 @@
     ],
     "asks": [
         "asks",
-        "Array \n",
+        "Array ",
         "卖方深度"
     ],
     "atRisk": [
@@ -554,7 +554,7 @@
         "bar",
         "String",
         "否",
-        "时间粒度，默认值 1m 如 [1m/3m/5m/15m/30m/1H/2H/4H]香港时间开盘价k线：[6H/12H/1D/2D/3D/1W/1M/3M/6M/1Y] UTC时间开盘价k线：[/6Hutc/12Hutc/1Dutc/2Dutc/3Dutc/1Wutc/1Mutc/3Mutc/6Mutc/1Yutc]\n"
+        "时间粒度，默认值 1m 如 [1m/3m/5m/15m/30m/1H/2H/4H]香港时间开盘价k线：[6H/12H/1D/2D/3D/1W/1M/3M/6M/1Y] UTC时间开盘价k线：[/6Hutc/12Hutc/1Dutc/2Dutc/3Dutc/1Wutc/1Mutc/3Mutc/6Mutc/1Yutc]"
     ],
     "baseBal": [
         "baseBal",
@@ -633,7 +633,7 @@
     ],
     "bids": [
         "bids",
-        "Array \n",
+        "Array ",
         "买方深度"
     ],
     "billId": [
@@ -759,7 +759,7 @@
     "cancelType": [
         "cancelType",
         "String",
-        "网格策略停止原因 0 ：无 1 ：手动停止 2 ：止盈停止 3 ：止损停止 4 ：风控停止 5 ：交割停止\n"
+        "网格策略停止原因 0 ：无 1 ：手动停止 2 ：止盈停止 3 ：止损停止 4 ：风控停止 5 ：交割停止"
     ],
     "cashBal": [
         "cashBal",
@@ -769,7 +769,7 @@
     "category": [
         "category",
         "String",
-        "订单种类  normal ：普通委托 twap ：TWAP自动换币adl ：ADL自动减仓   full_liquidation ：强制平仓 partial_liquidation ：强制减仓    delivery ：交割   ddh ：对冲减仓类型订单\n"
+        "订单种类  normal ：普通委托 twap ：TWAP自动换币adl ：ADL自动减仓   full_liquidation ：强制平仓 partial_liquidation ：强制减仓    delivery ：交割   ddh ：对冲减仓类型订单"
     ],
     "ccy": [
         "ccy",
@@ -780,7 +780,7 @@
     "chain": [
         "chain",
         "String",
-        "币种链信息 有的币种下有多个链，必须要做区分，如 USDT 下有 USDT-ERC20 ， USDT-TRC20 ， USDT-Omni 多个链\n"
+        "币种链信息 有的币种下有多个链，必须要做区分，如 USDT 下有 USDT-ERC20 ， USDT-TRC20 ， USDT-Omni 多个链"
     ],
     "chainName": [
         "{chainName}维护中，暂停提币",
@@ -928,7 +928,7 @@
     "ctIsoMode": [
         "ctIsoMode",
         "String",
-        "衍生品的逐仓保证金划转模式 automatic ：开仓划转  autonomy ：自主划转\n"
+        "衍生品的逐仓保证金划转模式 automatic ：开仓划转  autonomy ：自主划转"
     ],
     "ctMult": [
         "ctMult",
@@ -1075,7 +1075,7 @@
         "duration",
         "String",
         "否",
-        "回测周期 7D ：7天， 30D ：30天， 180D ：180天 默认 现货网格 为 7D ， 天地网格 为 180D \n"
+        "回测周期 7D ：7天， 30D ：30天， 180D ：180天 默认 现货网格 为 7D ， 天地网格 为 180D "
     ],
     "earlyRedeem": [
         "earlyRedeem",
@@ -1666,7 +1666,7 @@
     "maxBuy": [
         "maxBuy",
         "String",
-        "币币/币币杠杆 ：最大可买的交易币数量 单币种保证金模式下的全仓杠杆订单，为交易币数量 交割 / 永续 / 期权 ：最大可开多的合约张数\n"
+        "币币/币币杠杆 ：最大可买的交易币数量 单币种保证金模式下的全仓杠杆订单，为交易币数量 交割 / 永续 / 期权 ：最大可开多的合约张数"
     ],
     "maxFee": [
         "maxFee",
@@ -1707,7 +1707,7 @@
     "maxSell": [
         "maxSell",
         "String",
-        "币币/币币杠杆 ：最大可卖的计价币数量 单币种保证金模式下的全仓杠杆订单，为交易币数量 交割 / 永续 / 期权 ：最大可开空的合约张数\n"
+        "币币/币币杠杆 ：最大可卖的计价币数量 单币种保证金模式下的全仓杠杆订单，为交易币数量 交割 / 永续 / 期权 ：最大可开空的合约张数"
     ],
     "maxStopSz": [
         "maxStopSz",
@@ -1747,7 +1747,7 @@
     "messages": [
         "messages",
         "String",
-        "数组包含对[kind，timestamp，key，value]进行ABI编码的值，其中kind恒等于 prices ，timestamp是获取价格的时间戳，key是加密资产（例如， ETH ），value是资产价格\n"
+        "数组包含对[kind，timestamp，key，value]进行ABI编码的值，其中kind恒等于 prices ，timestamp是获取价格的时间戳，key是加密资产（例如， ETH ），value是资产价格"
     ],
     "mgnCcy": [
         "mgnCcy",
@@ -1758,7 +1758,7 @@
     "mgnIsoMode": [
         "mgnIsoMode",
         "String",
-        "币币杠杆的逐仓保证金划转模式 automatic ：开仓划转  autonomy ：自主划转\n"
+        "币币杠杆的逐仓保证金划转模式 automatic ：开仓划转  autonomy ：自主划转"
     ],
     "mgnMode": [
         "mgnMode",
@@ -1897,7 +1897,7 @@
         "newSz",
         "String",
         "可选",
-        "修改的新数量， newSz 和 newPx 不可同时为空。对于部分成交订单，该数量应包含已成交数量。\n"
+        "修改的新数量， newSz 和 newPx 不可同时为空。对于部分成交订单，该数量应包含已成交数量。"
     ],
     "nextDiscountTime": [
         "nextDiscountTime",
@@ -2163,7 +2163,7 @@
         "posSide",
         "String",
         "可选",
-        "持仓方向  在双向持仓模式下必填，且仅可选择  long  或  short 。 仅适用交割、永续。\n"
+        "持仓方向  在双向持仓模式下必填，且仅可选择  long  或  short 。 仅适用交割、永续。"
     ],
     "posType": [
         "posType",
@@ -2301,7 +2301,7 @@
     "quoteMaxLoan": [
         "quoteMaxLoan",
         "String",
-        "计价货币 最大借币量（仅适用于杠杆，且 instId 参数生效时），例如 BTC-USDT 里的 USDT最大借币量\n"
+        "计价货币 最大借币量（仅适用于杠杆，且 instId 参数生效时），例如 BTC-USDT 里的 USDT最大借币量"
     ],
     "quoteSide": [
         "quoteSide",
@@ -2378,7 +2378,7 @@
         "reduceOnly",
         "Boolean",
         "否",
-        "是否只减仓， true  或  false ，默认 false 仅适用于 币币杠杆 ，以及买卖模式下的 交割/永续 仅适用于 单币种保证金模式 和 跨币种保证金模式 \n"
+        "是否只减仓， true  或  false ，默认 false 仅适用于 币币杠杆 ，以及买卖模式下的 交割/永续 仅适用于 单币种保证金模式 和 跨币种保证金模式 "
     ],
     "region": [
         "抱歉，由于当地法律法规，欧易无法为{region}未认证用户提供服务，请先认证身分以继续使用欧易",
@@ -2634,7 +2634,7 @@
         "subAcct",
         "String",
         "可选",
-        "子账户名称，type 为 1 ， 2  或  4 ：subAcct 为必填项\n"
+        "子账户名称，type 为 1 ， 2  或  4 ：subAcct 为必填项"
     ],
     "subType": [
         "subType",
@@ -2776,7 +2776,7 @@
         "toAddr",
         "String",
         "是",
-        "如果选择链上提币， toAddr 必须是认证过的数字货币地址。某些数字货币地址格式为 地址:标签 ，如ARDOR-7JF3-8F2E-QUWZ-CAN7F:123456 如果选择内部转账， toAddr 必须是接收方地址，可以是邮箱、手机或者账户名。\n"
+        "如果选择链上提币， toAddr 必须是认证过的数字货币地址。某些数字货币地址格式为 地址:标签 ，如ARDOR-7JF3-8F2E-QUWZ-CAN7F:123456 如果选择内部转账， toAddr 必须是接收方地址，可以是邮箱、手机或者账户名。"
     ],
     "toCcy": [
         "toCcy",
@@ -2898,7 +2898,7 @@
         "triggerPxType",
         "String",
         "否",
-        "计划委托触发价格类型 last ：最新价格 index ：指数价格 mark ：标记价格 默认为 last \n"
+        "计划委托触发价格类型 last ：最新价格 index ：指数价格 mark ：标记价格 默认为 last "
     ],
     "triggerTime": [
         "triggerTime",
@@ -2918,7 +2918,7 @@
     "twap": [
         "twap",
         "String",
-        "当前负债币种触发系统自动换币的风险 0、1、2、3、4、5其中之一，数字越大代表您的负债币种触发自动换币概率越高 适用于 跨币种保证金模式 和 组合保证金模式 \n"
+        "当前负债币种触发系统自动换币的风险 0、1、2、3、4、5其中之一，数字越大代表您的负债币种触发自动换币概率越高 适用于 跨币种保证金模式 和 组合保证金模式 "
     ],
     "txId": [
         "txId",
@@ -2951,7 +2951,7 @@
         "unSpotOffset",
         "Boolean",
         "否",
-        "true ：禁止现货对冲， false ：允许现货对冲 默认为 false 仅适用于 组合保证金模式 开启现货对冲模式下有效，否则忽略此参数。\n"
+        "true ：禁止现货对冲， false ：允许现货对冲 默认为 false 仅适用于 组合保证金模式 开启现货对冲模式下有效，否则忽略此参数。"
     ],
     "unit": [
         "unit",
@@ -3036,22 +3036,22 @@
     "vol": [
         "vol",
         "String",
-        "交易量，以 张 为单位 如果是 衍生品 合约，数值为合约的张数。 如果是 币币/币币杠杆 ，数值为交易货币的数量。\n"
+        "交易量，以 张 为单位 如果是 衍生品 合约，数值为合约的张数。 如果是 币币/币币杠杆 ，数值为交易货币的数量。"
     ],
     "vol24h": [
         "vol24h",
         "String",
-        "24小时成交量，以 张 为单位 如果是 衍生品 合约，数值为合约的张数。 如果是 币币/币币杠杆 ，数值为交易货币的数量。\n"
+        "24小时成交量，以 张 为单位 如果是 衍生品 合约，数值为合约的张数。 如果是 币币/币币杠杆 ，数值为交易货币的数量。"
     ],
     "volCcy": [
         "volCcy",
         "String",
-        "交易量，以 币 为单位 如果是 衍生品 合约，数值为交易货币的数量。 如果是 币币/币币杠杆 ，数值为计价货币的数量。\n"
+        "交易量，以 币 为单位 如果是 衍生品 合约，数值为交易货币的数量。 如果是 币币/币币杠杆 ，数值为计价货币的数量。"
     ],
     "volCcy24h": [
         "volCcy24h",
         "String",
-        "24小时成交量，以 币 为单位 如果是 衍生品 合约，数值为交易货币的数量。 如果是 币币/币币杠杆 ，数值为计价货币的数量。\n"
+        "24小时成交量，以 币 为单位 如果是 衍生品 合约，数值为交易货币的数量。 如果是 币币/币币杠杆 ，数值为计价货币的数量。"
     ],
     "volCny": [
         "volCny",
